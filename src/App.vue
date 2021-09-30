@@ -1,29 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <canvas ref="canvas" />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from 'vue-property-decorator'
+import { Line, Bar, Radar, PolarArea, Bubble, Scatter, Doughnut  } from 'vue-chartjs';
 
-export default Vue.extend({
-  name: 'App',
-  components: {
-    HelloWorld
+@Component({
+  extends: Bubble,
+})
+export default class App extends Vue {
+  mounted () {
+    this.renderChart({
+      labels: ['A', 'B', 'C', 'D', 'E'],
+      datasets: [
+        {
+          label: 'Stas lox',
+          backgroundColor: ['#f87979', 'red', 'green', 'blue', 'purple'],
+          borderColor: [ 'purple', 'blue', 'red', 'green', '#f87979'],
+          fill: false,
+          borderWidth: 3,
+          data: [5,4,5,6,7],
+          // data: [{
+          //   x: 20,
+          //   y: 30,
+          //   r: 15
+          // }, {
+          //   x: 40,
+          //   y: 10,
+          //   r: 10
+          // }], for Bubble, Scatter
+        }
+      ]
+    })
   }
-});
+}
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  position: relative;
+  width: 400px;
+  height: 340px;
 }
 </style>
