@@ -1,20 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <line-chart
+        :data="{'2017-01-01': 11, '2017-01-02': 6}"
+        :colors="['#b00', '#666']"
+        width="600px"
+        height="400px"
+    />
+    <pie-chart
+        :data="[['Blueberry', 44], ['Strawberry', 23], ['Stas', 47]]"
+        :colors="['#060728', '#bd0d0d', 'purple']"
+        width="600px"
+        height="400px"
+        :donut="true"
+    />
+    <column-chart
+        :data="[['Sun', 32], ['Mon', 46], ['Tue', 28]]"
+        width="600px"
+        height="400px"
+    />
+    <bar-chart
+        :data="[['Work', 32], ['Play', 1492]]"
+        width="600px"
+        height="400px"
+    />
+    <area-chart
+        :data="{'2017-01-01': 11, '2017-01-02': 6}"
+        width="600px"
+        height="400px"
+    />
+    <scatter-chart
+        :data="[[174.0, 80.0], [176.5, 82.3]]"
+        xtitle="Size"
+        ytitle="Population"
+        width="600px"
+        height="400px"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from 'vue-property-decorator';
 
-export default Vue.extend({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+
+@Component
+export default class App extends Vue {}
 </script>
 
 <style>
